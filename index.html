@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Hamza Javaid — Senior Frontend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b0f;
+    --bg2: #0d1117;
+    --bg3: #131920;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(99,255,180,0.25);
+    --green: #63ffb4;
+    --green-dim: rgba(99,255,180,0.12);
+    --green-glow: rgba(99,255,180,0.06);
+    --text: #e8edf2;
+    --text-mid: #8a96a3;
+    --text-dim: #4a5568;
+    --mono: 'DM Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--display);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(8,11,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em;
+    color: var(--green); font-family: var(--mono); text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-mid); text-decoration: none; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--mono);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(99,255,180,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em;
+    color: var(--green); background: var(--green-dim);
+    border: 1px solid var(--border-accent);
+    padding: 0.35rem 0.8rem; border-radius: 2px;
+    margin-bottom: 1.8rem; text-transform: uppercase;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 1.2rem;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero-subtitle {
+    font-family: var(--mono); font-size: 0.85rem;
+    color: var(--text-mid); letter-spacing: 0.05em;
+    margin-bottom: 1.5rem; line-height: 1.7;
+  }
+  .hero-desc {
+    color: var(--text-mid); font-size: 0.95rem;
+    line-height: 1.75; margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
+  }
+  .pill {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem; border-radius: 2px;
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text-mid); text-transform: uppercase;
+  }
+  .pill.primary {
+    background: var(--green-dim); border-color: var(--border-accent);
+    color: var(--green);
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 0.8rem 1.6rem; border-radius: 2px;
+    cursor: pointer; transition: all 0.2s; border: none;
+  }
+  .btn-primary {
+    background: var(--green); color: #080b0f; font-weight: 500;
+  }
+  .btn-primary:hover { background: #7fffca; }
+  .btn-secondary {
+    background: transparent; color: var(--text-mid);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+  .btn-ghost {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--border);
+    font-size: 0.7rem; cursor: default;
+  }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+  }
+  .stat-card {
+    background: var(--bg2); padding: 2rem 1.8rem;
+    position: relative;
+  }
+  .stat-card::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 2px; height: 0; background: var(--green);
+    transition: height 0.6s ease;
+  }
+  .stat-card:hover::after { height: 100%; }
+  .stat-num {
+    font-size: 2.6rem; font-weight: 800; color: var(--green);
+    line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--text-mid);
+    text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--green); text-transform: uppercase; margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-tag::after {
+    content: ''; flex: 1; max-width: 60px; height: 1px;
+    background: var(--green);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text { color: var(--text-mid); line-height: 1.8; font-size: 0.95rem; }
+  .about-text p + p { margin-top: 1.2rem; }
+  .about-text strong { color: var(--text); }
+  .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .about-card {
+    background: var(--bg2); padding: 1.5rem;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .about-card:hover { border-color: var(--border-accent); }
+  .about-card-icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
+  .about-card-title {
+    font-size: 0.8rem; font-weight: 700; color: var(--text);
+    margin-bottom: 0.4rem; letter-spacing: 0.05em;
+  }
+  .about-card-text { font-family: var(--mono); font-size: 0.72rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2rem; padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+  .exp-meta { }
+  .exp-period {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--green);
+    letter-spacing: 0.08em; margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-size: 0.8rem; font-weight: 600; color: var(--text-mid);
+    margin-bottom: 0.3rem;
+  }
+  .exp-loc { font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); }
+  .exp-role {
+    font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .exp-project {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--green);
+    letter-spacing: 0.06em; margin-bottom: 1rem;
+  }
+  .exp-desc { color: var(--text-mid); font-size: 0.88rem; line-height: 1.75; margin-bottom: 1rem; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-bullets li {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--text-mid);
+    padding-left: 1.2rem; position: relative; line-height: 1.6;
+  }
+  .exp-bullets li::before {
+    content: '→'; position: absolute; left: 0; color: var(--green);
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
+  .exp-tag {
+    font-family: var(--mono); font-size: 0.65rem; padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: 2px; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* PROJECTS / CASE STUDIES */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .project-card {
+    background: var(--bg2); padding: 2.2rem;
+    transition: background 0.2s; position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--green);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { background: var(--bg3); }
+  .project-type {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em;
+    color: var(--green); text-transform: uppercase; margin-bottom: 0.8rem;
+  }
+  .project-title {
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem;
+  }
+  .project-org {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--text-mid);
+    margin-bottom: 1rem;
+  }
+  .project-desc { color: var(--text-mid); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.2rem; }
+  .project-highlights { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+  .project-highlights li {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--text-mid);
+    padding-left: 1rem; position: relative; line-height: 1.5;
+  }
+  .project-highlights li::before { content: '·'; position: absolute; left: 0; color: var(--green); font-size: 1rem; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .stack-tag {
+    font-family: var(--mono); font-size: 0.62rem; padding: 0.18rem 0.45rem;
+    background: var(--bg); border: 1px solid var(--border);
+    color: var(--text-dim); border-radius: 1px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .project-card.coming-soon { opacity: 0.45; }
+  .project-card.coming-soon .project-type { color: var(--text-dim); }
+  .project-card.featured { grid-column: span 2; }
+  .project-card.featured .project-title { font-size: 1.5rem; }
+  .project-card.featured .project-desc { max-width: 700px; }
+
+  /* CASE STUDY STYLES */
+  .case-study-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
+    color: var(--green); background: var(--green-dim);
+    border: 1px solid var(--border-accent);
+    padding: 0.2rem 0.6rem; border-radius: 2px;
+    margin-bottom: 0.8rem; text-transform: uppercase;
+  }
+  .case-study-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    margin: 1.5rem 0; border: 1px solid var(--border);
+  }
+  .cs-metric { background: var(--bg); padding: 1rem 0.8rem; }
+  .cs-metric-num {
+    font-size: 1.4rem; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 0.3rem;
+  }
+  .cs-metric-label { font-family: var(--mono); font-size: 0.62rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.4; }
+  .arch-flow {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    margin: 1rem 0; padding: 1rem;
+    background: var(--bg); border: 1px solid var(--border);
+  }
+  .arch-node {
+    font-family: var(--mono); font-size: 0.68rem; padding: 0.3rem 0.7rem;
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text-mid); white-space: nowrap;
+  }
+  .arch-arrow { color: var(--green); font-size: 0.8rem; }
+
+  /* CONTACT */
+  #contact { border-top: 1px solid var(--border); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; padding: 1.2rem 1.5rem;
+    border: 1px solid var(--border); background: var(--bg2);
+    transition: all 0.2s; color: var(--text);
+  }
+  .contact-link:hover { border-color: var(--border-accent); background: var(--bg3); }
+  .contact-link-icon { font-size: 1.2rem; }
+  .contact-link-text { flex: 1; }
+  .contact-link-label { font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+  .contact-link-value { font-size: 0.88rem; color: var(--text); }
+  .contact-link-arrow { color: var(--green); font-family: var(--mono); font-size: 0.8rem; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 100%;
+  }
+  .footer-text { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); }
+  .footer-status {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--green);
+  }
+  .footer-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* DIVIDER */
+  .full-bleed { max-width: 100%; padding-left: 4rem; padding-right: 4rem; }
+
+  /* SCROLL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .case-study-metrics { grid-template-columns: 1fr 1fr; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MHJ</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero full-bleed" style="max-width:100%">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-badge">Open to Remote · Worldwide</div>
+      <h1>Muhammad<br>Hamza <span>Javaid</span></h1>
+      <p class="hero-subtitle">Senior Frontend Engineer &amp; Technical Lead<br>Angular · React · TypeScript · Node.js · Java</p>
+      <p class="hero-desc">Building production-grade enterprise web applications for Fintech &amp; Banking. From greenfield architecture to team leadership — I own the full delivery cycle.</p>
+      <div class="hero-pills">
+        <span class="pill primary">Angular 8–20</span>
+        <span class="pill primary">NgRx</span>
+        <span class="pill primary">TypeScript</span>
+        <span class="pill">React</span>
+        <span class="pill">Node.js</span>
+        <span class="pill">Java</span>
+        <span class="pill">Spring Boot</span>
+        <span class="pill">AWS</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Work</a>
+        <a href="mailto:JavedHamza361@gmail.com" class="btn btn-secondary">Get in Touch</a>
+        <span class="btn btn-ghost" title="Coming soon">Resume ↓ Soon</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years of professional engineering experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Enterprise products delivered across Fintech, Banking & Insurance</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">22k+</div>
+          <div class="stat-label">User records managed in YAP Pakistan Admin Portal — live fintech production</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4–6</div>
+          <div class="stat-label">Engineers led across sprint cycles at Digitify / YAP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">About</div>
+  <h2 class="section-title">Engineer &amp; Architect</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <strong>Senior Frontend Engineer and Technical Lead</strong> based in Lahore, Pakistan, with 6+ years building enterprise-grade web applications across Fintech, Banking, Insurance, Humanitarian, and Event Management sectors.</p>
+      <p>My primary home is the <strong>Angular ecosystem</strong> — from v8 to v20 — where I've architected large-scale admin portals, led migration projects, and established team-wide engineering standards. I pair that depth with hands-on React and Node.js experience, and a full-stack foundation in Java and Spring Boot.</p>
+      <p>I don't just build features. I design the <strong>architecture they live in</strong> — layered frontend patterns, interceptor chains, NgRx state design, CI/CD pipelines, and code review processes that scale with the team.</p>
+      <p>Currently open to <strong>remote Technical Lead and Senior Engineer roles</strong> worldwide, especially in Fintech, Banking, or SaaS products with complex frontend requirements.</p>
+    </div>
+    <div class="about-cards reveal">
+      <div class="about-card">
+        <div class="about-card-icon">⚙️</div>
+        <div class="about-card-title">Architecture First</div>
+        <div class="about-card-text">Layered frontend patterns, interceptor chains, NgRx state design built for scale and maintainability</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏦</div>
+        <div class="about-card-title">Fintech Native</div>
+        <div class="about-card-text">Compliance workflows, live banking environments, regulatory-grade feature delivery across 3 countries</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">👥</div>
+        <div class="about-card-title">Team Leadership</div>
+        <div class="about-card-text">Sprint planning, tasking, grooming, unblocking engineers — leading delivery, not just writing code</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🌐</div>
+        <div class="about-card-title">Full Stack Depth</div>
+        <div class="about-card-text">Angular is home. React, Node.js, Java, Spring Boot, AWS — versatile across the stack when needed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="max-width:1200px; margin:0 auto; padding: 6rem 4rem;">
+  <div class="section-tag">Experience</div>
+  <h2 class="section-title">Where I've Worked</h2>
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Dec 2023 – Present</div>
+        <div class="exp-company">Digitify Pakistan · YAP</div>
+        <div class="exp-loc">Lahore, Pakistan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Senior Software Engineer · Technical Lead</div>
+        <div class="exp-project">YAP Pakistan Admin Portal · Angular 17→20 · Fintech / Digital Banking</div>
+        <div class="exp-desc">Architected and led delivery of a full-featured digital banking admin portal from greenfield — managing customer accounts, cards, transactions, compliance, and system configuration in a live fintech environment.</div>
+        <ul class="exp-bullets">
+          <li>Led a team of 4–6 engineers; delivered 32 modules from zero to first production release in 3–4 months</li>
+          <li>Designed layered architecture: Standalone Components → HTTP Services → Interceptor (JWT, token refresh, error handling) → NgRx State Store</li>
+          <li>Led Angular 19 → 20 migration with zero regression across all 32 modules</li>
+          <li>Own production support end-to-end using Datadog — triage, hotfix, and resolution</li>
+          <li>Lead all Agile ceremonies: sprint planning, grooming, tasking, and delivery tracking</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Angular 17–20</span><span class="exp-tag">NgRx</span><span class="exp-tag">TypeScript</span>
+          <span class="exp-tag">RxJS</span><span class="exp-tag">AWS</span><span class="exp-tag">Datadog</span><span class="exp-tag">JWT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Dec 2023 – Feb 2024</div>
+        <div class="exp-company">Digitify Pakistan</div>
+        <div class="exp-loc">Lahore, Pakistan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Senior Software Engineer</div>
+        <div class="exp-project">MATW Humanitarian Platform · Angular · Non-profit / Humanitarian Aid</div>
+        <div class="exp-desc">Global donation and impact platform supporting underprivileged communities worldwide, handling multi-currency transactions and real-time contribution tracking across multiple regions.</div>
+        <ul class="exp-bullets">
+          <li>Built dynamic modules with Strapi CMS integration for non-technical content management</li>
+          <li>Implemented i18n for 5+ languages and regional currency routing for global compliance</li>
+          <li>Delivered full platform within a 3-month engagement in a JIRA-driven Agile environment</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Angular</span><span class="exp-tag">Strapi CMS</span><span class="exp-tag">i18n</span><span class="exp-tag">TypeScript</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2020 – Nov 2023</div>
+        <div class="exp-company">A J Software Pvt. Ltd.</div>
+        <div class="exp-loc">Lahore, Pakistan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Software Engineer (Full Stack)</div>
+        <div class="exp-project">ORION &amp; Lender · Angular 12 + Java + Hibernate · Australian Fintech</div>
+        <div class="exp-desc">Two interconnected enterprise fintech platforms for the Australian market — handling the full loan lifecycle from application to settlement, used by financial institutions to automate complex regulatory workflows.</div>
+        <ul class="exp-bullets">
+          <li>Built and owned modules end-to-end: Point of Sale, Loan Assessment, Settlement Management, Contract Modification</li>
+          <li>Built REST APIs in Java + Hibernate for complex loan lifecycle, payment calculations, and compliance reporting</li>
+          <li>Implemented NgRx Publisher/Subscriber architecture, significantly reducing UI state bugs</li>
+          <li>Built 3 independently deployable micro-applications within a unified workspace</li>
+          <li>Executed Angular version migrations across both platforms with zero production downtime</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Angular 12</span><span class="exp-tag">Java</span><span class="exp-tag">Hibernate</span>
+          <span class="exp-tag">NgRx</span><span class="exp-tag">Spring Boot</span><span class="exp-tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2021 – Dec 2021</div>
+        <div class="exp-company">A J Software Pvt. Ltd.</div>
+        <div class="exp-loc">Lahore, Pakistan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Software Engineer (Full Stack)</div>
+        <div class="exp-project">LIFE · React + Node.js · Event Management Platform</div>
+        <div class="exp-desc">Full stack event management platform enabling clients to plan, organize, and track personal events such as birthdays, weddings, and social gatherings.</div>
+        <ul class="exp-bullets">
+          <li>Built the complete frontend in React — reusable component library, event listings, client dashboards, RSVP management</li>
+          <li>Engineered the Node.js backend: RESTful APIs, event scheduling logic, client notifications, MySQL persistence</li>
+          <li>Delivered end-to-end independently, demonstrating full JavaScript stack versatility</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">React</span><span class="exp-tag">Node.js</span><span class="exp-tag">MySQL</span><span class="exp-tag">REST APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2019 – Jun 2020</div>
+        <div class="exp-company">A J Software Pvt. Ltd.</div>
+        <div class="exp-loc">Lahore, Pakistan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Associate Software Engineer</div>
+        <div class="exp-project">VIRM &amp; CMS · Angular 8 · Australian Government Insurance</div>
+        <div class="exp-desc">Government-grade insurance platforms for the Australian market — vehicle policy registration and end-to-end accidental claim processing and compliance.</div>
+        <ul class="exp-bullets">
+          <li>Built Angular frontend components across VIRM: vehicle registration flows, policy management, renewal processing</li>
+          <li>Built CMS view-layer for full claim lifecycle: submission, assessor assignment, tracking, resolution</li>
+          <li>Integrated AWS (RDS/S3/EC2), JWT authentication, Bootstrap, Angular Material</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Angular 8</span><span class="exp-tag">AWS</span><span class="exp-tag">JWT</span><span class="exp-tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS / CASE STUDIES -->
+<section id="projects" style="max-width:1200px; margin:0 auto; padding: 6rem 4rem;">
+  <div class="section-tag">Projects &amp; Case Studies</div>
+  <h2 class="section-title">Selected Work</h2>
+
+  <div class="projects-grid">
+
+    <!-- YAP CASE STUDY — FEATURED -->
+    <div class="project-card featured reveal" style="padding: 2.8rem;">
+      <div class="case-study-badge">★ Case Study</div>
+      <div class="project-type">Fintech · Digital Banking · Technical Lead</div>
+      <div class="project-title">YAP Pakistan Admin Portal</div>
+      <div class="project-org">Digitify Pakistan Limited · Dec 2023 – Present</div>
+
+      <div class="project-desc" style="max-width:100%; margin-bottom: 2rem;">
+        A full-featured admin platform for YAP Pakistan's digital banking super-app — managing the complete customer lifecycle across onboarding, KYC, compliance, card controls, transaction monitoring, and system configuration. Built entirely from greenfield in a live fintech production environment, regulated by the State Bank of Pakistan.
+      </div>
+
+      <div class="case-study-metrics" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="cs-metric">
+          <div class="cs-metric-num">32</div>
+          <div class="cs-metric-label">Modules shipped greenfield to production</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-num">4mo</div>
+          <div class="cs-metric-label">Zero to first production release</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-num">22k+</div>
+          <div class="cs-metric-label">User records in live production</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-num">Ang 20</div>
+          <div class="cs-metric-label">Current version — v21 migration planned</div>
+        </div>
+      </div>
+
+      <!-- DECISION 1 -->
+      <div class="cs-block" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--green); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">Decision 01 — Rebuild vs Migrate</p>
+        <p style="font-size: 0.88rem; color: var(--text); font-weight: 600; margin-bottom: 0.6rem;">Challenged the company's assumption before writing a single line of code</p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 0.8rem;">
+          When I joined, the plan was to take the existing DOB portal (built in Angular 12) and migrate it to Angular 17 — rename things, upgrade versions, ship. I did a full migration analysis first. The blockers were serious: Angular requires step-by-step migration (12 → 13 → 14 → 15 → 16 → 17), Bootstrap had breaking class-level changes across those versions, and PrimeNG hadn't updated their version at the time. Beyond the libraries, the codebase itself had no proper file structure — the architecture was complex and dirty. My estimate: 7–8 months minimum, with a real risk of being blocked at any step. The production deadline was 4–5 months.
+        </p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75;">
+          I recommended rebuilding from scratch in Angular 17. I built a working prototype solo — User Management, full Auth flow, and the first Compliance screen — and presented it to the board alongside a written migration analysis. The board approved the rebuild on the spot. That single decision saved the project an estimated 3–4 months and removed all inherited technical debt.
+        </p>
+      </div>
+
+      <!-- DECISION 2 -->
+      <div class="cs-block" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--green); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">Decision 02 — Standalone Components over NgModules</p>
+        <p style="font-size: 0.88rem; color: var(--text); font-weight: 600; margin-bottom: 0.6rem;">Pushed for the newer Angular paradigm against initial resistance</p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75;">
+          I proposed adopting Angular's Standalone Component strategy from day one instead of the traditional NgModule approach. There was pushback. Rather than arguing in the abstract, I built a side-by-side comparison in the dev environment and showed the concrete difference in bundle size and code structure. The evidence made the case. Standalone components became the standard for the entire product — cleaner architecture, better performance, smaller bundles, and a codebase significantly easier to onboard new engineers into.
+        </p>
+      </div>
+
+      <!-- DECISION 3 -->
+      <div class="cs-block" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--green); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">Decision 03 — NgRx State over localStorage</p>
+        <p style="font-size: 0.88rem; color: var(--text); font-weight: 600; margin-bottom: 0.6rem;">Caught a compliance security risk and redesigned the data layer around it</p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75;">
+          While reviewing the DOB codebase, I found that tokens and user data were being persisted in localStorage. In a fintech product operating under State Bank of Pakistan regulations, this was a significant security compliance risk. I raised it with management, walked through the threat surface, and proposed a solution: move all sensitive state into an NgRx in-memory store, with HTTP Interceptors handling token attachment, refresh, and error propagation at the transport layer. This became the foundation of the entire state architecture — security-first by design, not retrofitted.
+        </p>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <p style="font-family: var(--mono); font-size:0.65rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">Architecture</p>
+      <div class="arch-flow" style="margin-bottom: 2rem;">
+        <div class="arch-node">Standalone UI Components</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">HTTP Services Layer</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">HTTP Interceptor (JWT · Token Refresh · Global Errors)</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">NgRx In-Memory State Store</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">UI (loop)</div>
+      </div>
+
+      <!-- OUTCOME -->
+      <div class="cs-block" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--green-glow); border: 1px solid var(--border-accent);">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--green); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">Outcome — Validated by the Market</p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75;">
+          Months after launch, YAP Pakistan entered the State Bank pilot phase. The regulator's compliance requirements included running on the latest versions of all technology across every product — mobile, admin, and backend. Because the portal was built on Angular 17 from scratch and we'd been migrating continuously alongside every release, we were already compliant. A team that had gone the migration route would have shipped on Angular 13 or 14 — and been forced into an emergency upgrade under regulatory pressure. The rebuild decision saved the product twice: once at the start, and once when the regulator asked. We're currently on Angular 20 and planning the v21 migration.
+        </p>
+      </div>
+
+      <!-- MY ROLE -->
+      <div style="margin-bottom: 1.5rem;">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.8rem;">My Role</p>
+        <ul class="project-highlights">
+          <li>Built the first production version solo — full Auth flow, User Management, Compliance screens, and complete architecture foundations</li>
+          <li>Trained the first team member (intern) while continuing to own all business logic; team grew and contracted over time</li>
+          <li>Still own production support end-to-end — triage, hotfix, and resolution via Datadog</li>
+          <li>Continue building features directly alongside leading PR reviews, sprint ceremonies, and team unblocking</li>
+          <li>Direct line to Head of Engineering — attend and lead business grooming meetings, translate fintech requirements into frontend solutions</li>
+          <li>Led Angular 19 → 20 migration with zero regression across all 32 modules</li>
+        </ul>
+      </div>
+
+      <div class="project-stack">
+        <span class="stack-tag">Angular 17–20</span><span class="stack-tag">NgRx</span><span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">RxJS</span><span class="stack-tag">Standalone Components</span>
+        <span class="stack-tag">HTTP Interceptors</span><span class="stack-tag">AWS</span>
+        <span class="stack-tag">Datadog</span><span class="stack-tag">JWT</span><span class="stack-tag">PrimeNG</span>
+      </div>
+    </div>
+
+    <!-- ORION & LENDER -->
+    <div class="project-card reveal" style="grid-column: span 2;">
+      <div class="project-type">Fintech · Loan Management · Full Stack · 3 Years</div>
+      <div class="project-title">ORION &amp; Lender</div>
+      <div class="project-org">A J Software Private Limited · Australian Market · Jul 2020 – Nov 2023</div>
+      <div class="project-desc">Two interconnected enterprise fintech platforms for the Australian market — ORION handling broker, insurance, and loan assessment workflows, and Lender managing the full loan lifecycle from application to settlement and compliance reporting. Used by Australian financial institutions to automate complex regulatory workflows end-to-end.</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+
+        <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+          <p style="font-family: var(--mono); font-size:0.62rem; color:var(--green); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.5rem;">Performance Fix — NgRx Pub/Sub</p>
+          <p style="font-size: 0.82rem; color: var(--text-mid); line-height: 1.7;">As the platform grew, shared data like user details and application lists was being fetched via API on every component that needed it — no caching, no shared state. Pages slowed down, load times compounded, and the network was saturated with duplicate calls. The team adopted NgRx with a Publisher/Subscriber architecture: fetch once, store in state, subscribe anywhere. Redundant API calls eliminated, load times reduced significantly across the platform.</p>
+        </div>
+
+        <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+          <p style="font-family: var(--mono); font-size:0.62rem; color:var(--green); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.5rem;">Full Stack Delivery — Dashboard to DB</p>
+          <p style="font-size: 0.82rem; color: var(--text-mid); line-height: 1.7;">Built complete features end-to-end across the stack — Angular frontend through Java/Hibernate REST APIs down to MySQL with stored procedures. The Dashboard module was a full-stack solo delivery: UI components, API layer, data queries, and stored procedures for complex loan data reporting. Also owned modules including Point of Sale, Loan Assessment, Settlement Management, and Contract Modification.</p>
+        </div>
+
+        <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+          <p style="font-family: var(--mono); font-size:0.62rem; color:var(--green); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.5rem;">Finance Calculation Utility</p>
+          <p style="font-size: 0.82rem; color: var(--text-mid); line-height: 1.7;">The Finance Management module required complex payment calculations that were being duplicated across multiple areas of the platform. Built a centralised calculation utility that could be imported and reused across any module needing financial logic — reducing code duplication, ensuring consistency, and making future calculation changes a single-point update rather than a platform-wide find-and-replace.</p>
+        </div>
+
+        <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+          <p style="font-family: var(--mono); font-size:0.62rem; color:var(--green); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.5rem;">Angular Strict Mode &amp; Version Migrations</p>
+          <p style="font-size: 0.82rem; color: var(--text-mid); line-height: 1.7;">Executed Angular version migrations across both platforms — from Angular 8 through to Angular 16 — with zero production downtime. Introduced TypeScript strict mode (available as default from Angular 15) across the codebase, catching a class of type-safety bugs at compile time that had previously surfaced only in production. Each migration improved platform stability and kept the codebase aligned with modern Angular patterns.</p>
+        </div>
+
+      </div>
+
+      <div style="margin-bottom: 0.5rem;">
+        <p style="font-family: var(--mono); font-size:0.62rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.6rem;">Also built</p>
+        <ul class="project-highlights" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem;">
+          <li>3 independently deployable micro-applications in a unified workspace</li>
+          <li>Quote and Dashboard modules with Wijmo Flex &amp; Google Charts</li>
+          <li>PDF generation via XSLTs with data binding and custom styles</li>
+          <li>Grape City spreadsheet integration for Income, Asset &amp; Liability reporting</li>
+          <li>REST APIs for loan lifecycle, payment calculations &amp; compliance reporting</li>
+          <li>Australian regulatory compliance features across both platforms</li>
+        </ul>
+      </div>
+
+      <div class="project-stack" style="margin-top: 1.2rem;">
+        <span class="stack-tag">Angular 8–16</span><span class="stack-tag">Java</span><span class="stack-tag">Hibernate</span>
+        <span class="stack-tag">Spring Boot</span><span class="stack-tag">NgRx</span><span class="stack-tag">TypeScript Strict</span>
+        <span class="stack-tag">MySQL</span><span class="stack-tag">Stored Procedures</span><span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">Micro-frontends</span>
+      </div>
+    </div>
+
+    <!-- MATW -->
+    <div class="project-card reveal">
+      <div class="project-type">Humanitarian · Non-profit · Global</div>
+      <div class="project-title">MATW Humanitarian Platform</div>
+      <div class="project-org">Digitify Pakistan · Dec 2023 – Feb 2024</div>
+      <div class="project-desc">Global donation and impact platform supporting underprivileged communities worldwide — multi-currency transactions, real-time contribution tracking, and content management across multiple regions and languages.</div>
+      <ul class="project-highlights">
+        <li>5+ language i18n implementation for a global user base</li>
+        <li>Regional currency calculation engine with country-based routing</li>
+        <li>Strapi CMS integration enabling non-technical staff content management</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Angular</span><span class="stack-tag">Strapi CMS</span>
+        <span class="stack-tag">i18n</span><span class="stack-tag">TypeScript</span>
+      </div>
+    </div>
+
+    <!-- LIFE -->
+    <div class="project-card reveal">
+      <div class="project-type">Event Management · Full Stack · Side Project</div>
+      <div class="project-title">LIFE — Event Management Platform</div>
+      <div class="project-org">A J Software · Jul – Dec 2021</div>
+      <div class="project-desc">Full stack event management platform enabling clients to plan, organize, and track personal events. Built independently end-to-end, demonstrating cross-stack capability in React and Node.js.</div>
+      <ul class="project-highlights">
+        <li>React frontend: component library, event listings, dashboards, RSVP management</li>
+        <li>Node.js backend: RESTful APIs, scheduling logic, notifications, MySQL persistence</li>
+        <li>Solo delivery — designed, built, and shipped independently</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">React</span><span class="stack-tag">Node.js</span>
+        <span class="stack-tag">MySQL</span><span class="stack-tag">REST APIs</span>
+      </div>
+    </div>
+
+    <!-- VIRM & CMS -->
+    <div class="project-card reveal">
+      <div class="project-type">Government · Insurance · Angular</div>
+      <div class="project-title">VIRM &amp; CMS</div>
+      <div class="project-org">A J Software · Australian Government · 2019–2020</div>
+      <div class="project-desc">Government-grade insurance platforms for the Australian market — vehicle policy registration lifecycle and end-to-end accidental claim processing with full compliance requirements.</div>
+      <ul class="project-highlights">
+        <li>Vehicle registration flows, policy management, and renewal processing</li>
+        <li>Full claim lifecycle: submission, assessor assignment, status tracking, resolution</li>
+        <li>AWS (RDS/S3/EC2), JWT auth, compliance-critical delivery</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Angular 8</span><span class="stack-tag">AWS</span>
+        <span class="stack-tag">JWT</span><span class="stack-tag">MySQL</span>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width:1200px; margin:0 auto; padding: 6rem 4rem;">
+  <div class="section-tag">Contact</div>
+  <h2 class="section-title">Let's Talk</h2>
+  <div class="contact-inner">
+    <div class="reveal">
+      <p style="color:var(--text-mid); font-size:0.95rem; line-height:1.8; margin-bottom:1.5rem;">
+        I'm currently open to <strong style="color:var(--text)">remote Technical Lead and Senior Engineer roles worldwide</strong> — particularly in Fintech, Banking, or SaaS products with complex frontend architecture needs.
+      </p>
+      <p style="color:var(--text-mid); font-size:0.95rem; line-height:1.8;">
+        Best way to reach me is email. I respond quickly and am happy to jump on a call.
+      </p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:JavedHamza361@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div class="contact-link-text">
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">JavedHamza361@gmail.com</div>
+        </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <a href="https://linkedin.com/in/muhammad-hamza-javaid5a08b421b" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        <div class="contact-link-text">
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">muhammad-hamza-javaid</div>
+        </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <div class="contact-link" style="opacity:0.4; cursor:default;">
+        <div class="contact-link-icon">⚡</div>
+        <div class="contact-link-text">
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-value">Coming soon — project in progress</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© 2025 Muhammad Hamza Javaid · Built with intent, not a template</div>
+  <div class="footer-status">Available for remote opportunities</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
