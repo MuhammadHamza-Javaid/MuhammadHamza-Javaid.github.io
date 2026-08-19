@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Hamza Javaid — Senior Frontend Engineer</title>
+<title>Muhammad Hamza Javaid — Angular Technical Lead | Fintech &amp; Digital Banking</title>
+<meta name="description" content="Angular technical lead with 7+ years in fintech and digital banking. Angular v8-v20, real-time systems with WebSockets and SIP telephony, Java/Hibernate backends. Based in Lahore, open to remote.">
+<meta name="author" content="Muhammad Hamza Javaid">
+<link rel="canonical" href="https://muhammadhamza-javaid.github.io/">
+<meta property="og:title" content="Muhammad Hamza Javaid — Angular Technical Lead">
+<meta property="og:description" content="7+ years building fintech and digital banking platforms. Angular v8-v20, WebSockets, SIP telephony, Java/Hibernate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://muhammadhamza-javaid.github.io/">
+<meta property="og:site_name" content="Muhammad Hamza Javaid">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Muhammad Hamza Javaid — Angular Technical Lead">
+<meta name="twitter:description" content="7+ years building fintech and digital banking platforms. Angular v8-v20, WebSockets, SIP telephony, Java/Hibernate.">
+<meta name="theme-color" content="#080b0f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -241,7 +253,7 @@
   }
 
   /* PROJECTS / CASE STUDIES */
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .projects-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1px; background: var(--border); }
   .project-card {
     background: var(--bg2); padding: 2.2rem;
     transition: background 0.2s; position: relative; overflow: hidden;
@@ -282,6 +294,10 @@
   .project-card.coming-soon { opacity: 0.45; }
   .project-card.coming-soon .project-type { color: var(--text-dim); }
   .project-card.featured { grid-column: span 2; }
+  .project-card.wide { grid-column: span 2; }
+  .cs-split { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1rem; margin: 1.5rem 0; }
+  .cs-cols2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 0.3rem; }
+  .case-study-metrics.cols4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
   .project-card.featured .project-title { font-size: 1.5rem; }
   .project-card.featured .project-desc { max-width: 700px; }
 
@@ -369,10 +385,25 @@
     .about-grid { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured { grid-column: span 1; }
+    .project-card.featured, .project-card.wide { grid-column: span 1; }
+    .cs-split, .cs-cols2 { grid-template-columns: 1fr; }
+    .arch-node { white-space: normal; }
+    .arch-flow { flex-direction: column; align-items: stretch; }
+    .arch-arrow { align-self: center; }
     .contact-inner { grid-template-columns: 1fr; }
-    .case-study-metrics { grid-template-columns: 1fr 1fr; }
+    .case-study-metrics, .case-study-metrics.cols4 { grid-template-columns: 1fr 1fr; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  @media (max-width: 560px) {
+    nav { padding: 0.9rem 1.1rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.68rem; letter-spacing: 0.05em; }
+    .nav-logo { font-size: 0.78rem; }
+    .hero-stats { grid-template-columns: 1fr; }
+    .about-cards { grid-template-columns: 1fr; }
+    .case-study-metrics, .case-study-metrics.cols4 { grid-template-columns: 1fr; }
+    .project-card, .project-card.featured { padding: 1.5rem !important; }
   }
 </style>
 </head>
@@ -395,16 +426,16 @@
     <div class="hero-left">
       <div class="hero-badge">Open to Remote · Worldwide</div>
       <h1>Muhammad<br>Hamza <span>Javaid</span></h1>
-      <p class="hero-subtitle">Senior Frontend Engineer &amp; Technical Lead<br>Angular · React · TypeScript · Node.js · Java</p>
-      <p class="hero-desc">Building production-grade enterprise web applications for Fintech &amp; Banking. From greenfield architecture to team leadership — I own the full delivery cycle.</p>
+      <p class="hero-subtitle">Technical Lead — Angular / Frontend Architecture<br>Angular · TypeScript · WebSockets · Java &amp; Hibernate</p>
+      <p class="hero-desc">Building production-grade enterprise web applications for Fintech &amp; Banking — including real-time systems on WebSockets and SIP telephony. From greenfield architecture to team leadership, I own the full delivery cycle.</p>
       <div class="hero-pills">
         <span class="pill primary">Angular 8–20</span>
+        <span class="pill primary">Signals</span>
         <span class="pill primary">NgRx</span>
         <span class="pill primary">TypeScript</span>
-        <span class="pill">React</span>
-        <span class="pill">Node.js</span>
-        <span class="pill">Java</span>
-        <span class="pill">Spring Boot</span>
+        <span class="pill primary">WebSockets</span>
+        <span class="pill">SIP Telephony</span>
+        <span class="pill">Java · Hibernate</span>
         <span class="pill">AWS</span>
       </div>
       <div class="hero-cta">
@@ -416,7 +447,7 @@
     <div class="hero-right">
       <div class="hero-stats">
         <div class="stat-card">
-          <div class="stat-num">6+</div>
+          <div class="stat-num">7+</div>
           <div class="stat-label">Years of professional engineering experience</div>
         </div>
         <div class="stat-card">
@@ -425,7 +456,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">22k+</div>
-          <div class="stat-label">User records managed in YAP Pakistan Admin Portal — live fintech production</div>
+          <div class="stat-label">Customer records administered in YAP Pakistan Admin Portal — live fintech production</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">4–6</div>
@@ -442,8 +473,8 @@
   <h2 class="section-title">Engineer &amp; Architect</h2>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>I'm a <strong>Senior Frontend Engineer and Technical Lead</strong> based in Lahore, Pakistan, with 6+ years building enterprise-grade web applications across Fintech, Banking, Insurance, Humanitarian, and Event Management sectors.</p>
-      <p>My primary home is the <strong>Angular ecosystem</strong> — from v8 to v20 — where I've architected large-scale admin portals, led migration projects, and established team-wide engineering standards. I pair that depth with hands-on React and Node.js experience, and a full-stack foundation in Java and Spring Boot.</p>
+      <p>I'm a <strong>Senior Frontend Engineer and Technical Lead</strong> based in Lahore, Pakistan, with 7+ years building enterprise-grade web applications across Fintech, Banking, Insurance, Humanitarian, and Event Management sectors.</p>
+      <p>My primary home is the <strong>Angular ecosystem</strong> — from v8 to v20 — where I've architected large-scale admin portals, led migration projects, built real-time systems on WebSockets and SIP telephony, and established team-wide engineering standards. I pair that depth with a backend foundation in <strong>Java and Hibernate</strong>, from four years of full-stack delivery between 2019 and 2023.</p>
       <p>I don't just build features. I design the <strong>architecture they live in</strong> — layered frontend patterns, interceptor chains, NgRx state design, CI/CD pipelines, and code review processes that scale with the team.</p>
       <p>Currently open to <strong>remote Technical Lead and Senior Engineer roles</strong> worldwide, especially in Fintech, Banking, or SaaS products with complex frontend requirements.</p>
     </div>
@@ -466,7 +497,7 @@
       <div class="about-card">
         <div class="about-card-icon">🌐</div>
         <div class="about-card-title">Full Stack Depth</div>
-        <div class="about-card-text">Angular is home. React, Node.js, Java, Spring Boot, AWS — versatile across the stack when needed</div>
+        <div class="about-card-text">Angular is home. Java &amp; Hibernate, Node.js, React, AWS — versatile across the stack when needed</div>
       </div>
     </div>
   </div>
@@ -487,17 +518,18 @@
       <div class="exp-content">
         <div class="exp-role">Senior Software Engineer · Technical Lead</div>
         <div class="exp-project">YAP Pakistan Admin Portal · Angular 17→20 · Fintech / Digital Banking</div>
-        <div class="exp-desc">Architected and led delivery of a full-featured digital banking admin portal from greenfield — managing customer accounts, cards, transactions, compliance, and system configuration in a live fintech environment.</div>
+        <div class="exp-desc">Architected and led delivery of a full-featured digital banking admin portal from greenfield — managing customer accounts, cards, transactions, compliance, customer support operations, and system configuration in a live fintech environment.</div>
         <ul class="exp-bullets">
           <li>Led a team of 4–6 engineers; delivered 32 modules from zero to first production release in 3–4 months</li>
-          <li>Designed layered architecture: Standalone Components → HTTP Services → Interceptor (JWT, token refresh, error handling) → NgRx State Store</li>
-          <li>Led Angular 19 → 20 migration with zero regression across all 32 modules</li>
+          <li>Designed layered architecture: Standalone Components → HTTP Services → Interceptor (JWT, token refresh, error handling) → NgRx State Store, with Signals for reactive local state</li>
+          <li>Built the contact-centre console — browser SIP telephony over a WebSocket layer handling call state, agent presence and live queue sync for dozens of concurrent agents</li>
+          <li>Led Angular 19 → 20 migration across all 32 modules — no P1 or P2 defects reported after cutover</li>
           <li>Own production support end-to-end using Datadog — triage, hotfix, and resolution</li>
           <li>Lead all Agile ceremonies: sprint planning, grooming, tasking, and delivery tracking</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Angular 17–20</span><span class="exp-tag">NgRx</span><span class="exp-tag">TypeScript</span>
-          <span class="exp-tag">RxJS</span><span class="exp-tag">AWS</span><span class="exp-tag">Datadog</span><span class="exp-tag">JWT</span>
+          <span class="exp-tag">Angular 17–20</span><span class="exp-tag">Signals</span><span class="exp-tag">NgRx</span><span class="exp-tag">TypeScript</span>
+          <span class="exp-tag">RxJS</span><span class="exp-tag">WebSockets</span><span class="exp-tag">SIP</span><span class="exp-tag">AWS</span><span class="exp-tag">Datadog</span><span class="exp-tag">JWT</span>
         </div>
       </div>
     </div>
@@ -514,7 +546,7 @@
         <div class="exp-desc">Global donation and impact platform supporting underprivileged communities worldwide, handling multi-currency transactions and real-time contribution tracking across multiple regions.</div>
         <ul class="exp-bullets">
           <li>Built dynamic modules with Strapi CMS integration for non-technical content management</li>
-          <li>Implemented i18n for 5+ languages and regional currency routing for global compliance</li>
+          <li>Implemented i18n for five languages and regional currency routing for global compliance</li>
           <li>Delivered full platform within a 3-month engagement in a JIRA-driven Agile environment</li>
         </ul>
         <div class="exp-tags">
@@ -531,18 +563,18 @@
       </div>
       <div class="exp-content">
         <div class="exp-role">Software Engineer (Full Stack)</div>
-        <div class="exp-project">ORION &amp; Lender · Angular 12 + Java + Hibernate · Australian Fintech</div>
+        <div class="exp-project">ORION &amp; Lender · Angular 12 + Java + Hibernate · Credit Objects, Australian Fintech</div>
         <div class="exp-desc">Two interconnected enterprise fintech platforms for the Australian market — handling the full loan lifecycle from application to settlement, used by financial institutions to automate complex regulatory workflows.</div>
         <ul class="exp-bullets">
           <li>Built and owned modules end-to-end: Point of Sale, Loan Assessment, Settlement Management, Contract Modification</li>
           <li>Built REST APIs in Java + Hibernate for complex loan lifecycle, payment calculations, and compliance reporting</li>
-          <li>Implemented NgRx Publisher/Subscriber architecture, significantly reducing UI state bugs</li>
+          <li>Implemented NgRx Publisher/Subscriber architecture, removing a class of cross-component state synchronisation bugs</li>
           <li>Built 3 independently deployable micro-applications within a unified workspace</li>
-          <li>Executed Angular version migrations across both platforms with zero production downtime</li>
+          <li>Executed Angular version migrations across both platforms, sequencing releases so users mid-session were never served a broken bundle</li>
         </ul>
         <div class="exp-tags">
           <span class="exp-tag">Angular 12</span><span class="exp-tag">Java</span><span class="exp-tag">Hibernate</span>
-          <span class="exp-tag">NgRx</span><span class="exp-tag">Spring Boot</span><span class="exp-tag">MySQL</span>
+          <span class="exp-tag">NgRx</span><span class="exp-tag">Maven</span><span class="exp-tag">MySQL</span>
         </div>
       </div>
     </div>
@@ -577,7 +609,7 @@
       <div class="exp-content">
         <div class="exp-role">Associate Software Engineer</div>
         <div class="exp-project">VIRM &amp; CMS · Angular 8 · Australian Government Insurance</div>
-        <div class="exp-desc">Government-grade insurance platforms for the Australian market — vehicle policy registration and end-to-end accidental claim processing and compliance.</div>
+        <div class="exp-desc">Insurance platforms built for an Australian government insurance body — vehicle policy registration and end-to-end accidental claim processing and compliance.</div>
         <ul class="exp-bullets">
           <li>Built Angular frontend components across VIRM: vehicle registration flows, policy management, renewal processing</li>
           <li>Built CMS view-layer for full claim lifecycle: submission, assessor assignment, tracking, resolution</li>
@@ -610,7 +642,7 @@
         A full-featured admin platform for YAP Pakistan's digital banking super-app — managing the complete customer lifecycle across onboarding, KYC, compliance, card controls, transaction monitoring, and system configuration. Built entirely from greenfield in a live fintech production environment, regulated by the State Bank of Pakistan.
       </div>
 
-      <div class="case-study-metrics" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="case-study-metrics cols4">
         <div class="cs-metric">
           <div class="cs-metric-num">32</div>
           <div class="cs-metric-label">Modules shipped greenfield to production</div>
@@ -621,7 +653,7 @@
         </div>
         <div class="cs-metric">
           <div class="cs-metric-num">22k+</div>
-          <div class="cs-metric-label">User records in live production</div>
+          <div class="cs-metric-label">Customer records administered in live production</div>
         </div>
         <div class="cs-metric">
           <div class="cs-metric-num">Ang 20</div>
@@ -668,7 +700,7 @@
         <span class="arch-arrow">→</span>
         <div class="arch-node">HTTP Interceptor (JWT · Token Refresh · Global Errors)</div>
         <span class="arch-arrow">→</span>
-        <div class="arch-node">NgRx In-Memory State Store</div>
+        <div class="arch-node">NgRx In-Memory Store + Signals</div>
         <span class="arch-arrow">→</span>
         <div class="arch-node">UI (loop)</div>
       </div>
@@ -690,26 +722,96 @@
           <li>Still own production support end-to-end — triage, hotfix, and resolution via Datadog</li>
           <li>Continue building features directly alongside leading PR reviews, sprint ceremonies, and team unblocking</li>
           <li>Direct line to Head of Engineering — attend and lead business grooming meetings, translate fintech requirements into frontend solutions</li>
-          <li>Led Angular 19 → 20 migration with zero regression across all 32 modules</li>
+          <li>Led Angular 19 → 20 migration across all 32 modules — no P1 or P2 defects reported after cutover</li>
         </ul>
       </div>
 
       <div class="project-stack">
-        <span class="stack-tag">Angular 17–20</span><span class="stack-tag">NgRx</span><span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">Angular 17–20</span><span class="stack-tag">Signals</span><span class="stack-tag">NgRx</span><span class="stack-tag">TypeScript</span>
         <span class="stack-tag">RxJS</span><span class="stack-tag">Standalone Components</span>
+        <span class="stack-tag">WebSockets</span><span class="stack-tag">SIP Telephony</span>
         <span class="stack-tag">HTTP Interceptors</span><span class="stack-tag">AWS</span>
         <span class="stack-tag">Datadog</span><span class="stack-tag">JWT</span><span class="stack-tag">PrimeNG</span>
       </div>
     </div>
 
+    <!-- CONTACT CENTRE CASE STUDY — FEATURED -->
+    <div class="project-card featured reveal" style="padding: 2.8rem;">
+      <div class="case-study-badge">★ Case Study</div>
+      <div class="project-type">Real-Time Systems · Telephony · Contact Centre</div>
+      <div class="project-title">Customer Support &amp; Contact Centre Console</div>
+      <div class="project-org">YAP Pakistan Admin Portal · Digitify Pakistan Limited</div>
+
+      <div class="project-desc" style="max-width:100%; margin-bottom: 2rem;">
+        A full call-centre operations console built inside the YAP admin platform — inbound and outbound calling, live call logs, ticketing, agent activity tracking, and supervisor management for dozens of concurrent agents handling customer support for a live digital bank. The most technically demanding module in the product, and the one I would want to be judged on.
+      </div>
+
+      <div class="case-study-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric-num">SIP</div>
+          <div class="cs-metric-label">Browser telephony — inbound &amp; outbound call handling</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-num">WS</div>
+          <div class="cs-metric-label">WebSocket transport for live call &amp; agent state</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric-num">Live</div>
+          <div class="cs-metric-label">Dozens of concurrent agents and supervisors in production</div>
+        </div>
+      </div>
+
+      <div class="cs-block" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--green); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">The Hard Part — State Consistency, Not Telephony</p>
+        <p style="font-size: 0.88rem; color: var(--text); font-weight: 600; margin-bottom: 0.6rem;">Integrating SIP was the easy half. Keeping the floor in sync was the real problem.</p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 0.8rem;">
+          Wiring SIP telephony into the browser gave agents call handling. The difficulty was everything around it: a supervisor's live view of the floor has to reflect what every agent is actually doing, in real time, over connections that drop. A stale agent-presence flag means a supervisor routes a call to someone already busy. A missed call-state event means a ticket never closes.
+        </p>
+        <p style="font-size: 0.83rem; color: var(--text-mid); line-height: 1.75;">
+          I built the WebSocket layer around that constraint — connection lifecycle with reconnect and exponential backoff, heartbeat detection so a half-open socket is treated as disconnected rather than idle, and event-driven synchronisation of call state, agent presence, and queue data into the NgRx store. State is reconciled on reconnect rather than assumed, so an agent who drops mid-call rejoins to accurate state instead of a stale snapshot.
+        </p>
+      </div>
+
+      <p style="font-family: var(--mono); font-size:0.65rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.6rem;">Architecture</p>
+      <div class="arch-flow" style="margin-bottom: 2rem;">
+        <div class="arch-node">SIP Client (browser)</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">WebSocket Transport (reconnect · backoff · heartbeat)</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">Call &amp; Presence Event Stream</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">NgRx Store + Signals</div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-node">Agent &amp; Supervisor Views</div>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <p style="font-family: var(--mono); font-size:0.65rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.8rem;">What It Covers</p>
+        <ul class="project-highlights">
+          <li>Inbound and outbound calling with in-browser SIP call control</li>
+          <li>Live call logs and full call history per customer and per agent</li>
+          <li>Ticketing tied to call records, so support context survives the call</li>
+          <li>Agent activity tracking — availability, active call, and idle state</li>
+          <li>Supervisor console with a live view of the floor and queue depth</li>
+          <li>Reconnect-safe state reconciliation so dropped sockets never leave stale presence</li>
+        </ul>
+      </div>
+
+      <div class="project-stack">
+        <span class="stack-tag">Angular 20</span><span class="stack-tag">WebSockets</span><span class="stack-tag">SIP Telephony</span>
+        <span class="stack-tag">NgRx</span><span class="stack-tag">Signals</span><span class="stack-tag">RxJS</span>
+        <span class="stack-tag">TypeScript</span><span class="stack-tag">Real-Time State</span>
+      </div>
+    </div>
+
     <!-- ORION & LENDER -->
-    <div class="project-card reveal" style="grid-column: span 2;">
+    <div class="project-card wide reveal">
       <div class="project-type">Fintech · Loan Management · Full Stack · 3 Years</div>
       <div class="project-title">ORION &amp; Lender</div>
-      <div class="project-org">A J Software Private Limited · Australian Market · Jul 2020 – Nov 2023</div>
+      <div class="project-org">A J Software Private Limited — Pakistan engineering arm of Credit Objects, Australia · Jul 2020 – Nov 2023</div>
       <div class="project-desc">Two interconnected enterprise fintech platforms for the Australian market — ORION handling broker, insurance, and loan assessment workflows, and Lender managing the full loan lifecycle from application to settlement and compliance reporting. Used by Australian financial institutions to automate complex regulatory workflows end-to-end.</div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+      <div class="cs-split">
 
         <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
           <p style="font-family: var(--mono); font-size:0.62rem; color:var(--green); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.5rem;">Performance Fix — NgRx Pub/Sub</p>
@@ -728,14 +830,14 @@
 
         <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--border); border-left: 2px solid var(--green);">
           <p style="font-family: var(--mono); font-size:0.62rem; color:var(--green); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.5rem;">Angular Strict Mode &amp; Version Migrations</p>
-          <p style="font-size: 0.82rem; color: var(--text-mid); line-height: 1.7;">Executed Angular version migrations across both platforms — from Angular 8 through to Angular 16 — with zero production downtime. Introduced TypeScript strict mode (available as default from Angular 15) across the codebase, catching a class of type-safety bugs at compile time that had previously surfaced only in production. Each migration improved platform stability and kept the codebase aligned with modern Angular patterns.</p>
+          <p style="font-size: 0.82rem; color: var(--text-mid); line-height: 1.7;">Executed Angular version migrations across both platforms — from Angular 8 through to Angular 16 — sequencing each release so users mid-session were never served a broken bundle. Introduced TypeScript strict mode (available as default from Angular 15) across the codebase, catching a class of type-safety bugs at compile time that had previously surfaced only in production. Each migration improved platform stability and kept the codebase aligned with modern Angular patterns.</p>
         </div>
 
       </div>
 
       <div style="margin-bottom: 0.5rem;">
         <p style="font-family: var(--mono); font-size:0.62rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.6rem;">Also built</p>
-        <ul class="project-highlights" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem;">
+        <ul class="project-highlights cs-cols2">
           <li>3 independently deployable micro-applications in a unified workspace</li>
           <li>Quote and Dashboard modules with Wijmo Flex &amp; Google Charts</li>
           <li>PDF generation via XSLTs with data binding and custom styles</li>
@@ -747,7 +849,7 @@
 
       <div class="project-stack" style="margin-top: 1.2rem;">
         <span class="stack-tag">Angular 8–16</span><span class="stack-tag">Java</span><span class="stack-tag">Hibernate</span>
-        <span class="stack-tag">Spring Boot</span><span class="stack-tag">NgRx</span><span class="stack-tag">TypeScript Strict</span>
+        <span class="stack-tag">Maven</span><span class="stack-tag">NgRx</span><span class="stack-tag">TypeScript Strict</span>
         <span class="stack-tag">MySQL</span><span class="stack-tag">Stored Procedures</span><span class="stack-tag">REST APIs</span>
         <span class="stack-tag">Micro-frontends</span>
       </div>
@@ -760,7 +862,7 @@
       <div class="project-org">Digitify Pakistan · Dec 2023 – Feb 2024</div>
       <div class="project-desc">Global donation and impact platform supporting underprivileged communities worldwide — multi-currency transactions, real-time contribution tracking, and content management across multiple regions and languages.</div>
       <ul class="project-highlights">
-        <li>5+ language i18n implementation for a global user base</li>
+        <li>Five-language i18n implementation for a global user base</li>
         <li>Regional currency calculation engine with country-based routing</li>
         <li>Strapi CMS integration enabling non-technical staff content management</li>
       </ul>
@@ -792,7 +894,7 @@
       <div class="project-type">Government · Insurance · Angular</div>
       <div class="project-title">VIRM &amp; CMS</div>
       <div class="project-org">A J Software · Australian Government · 2019–2020</div>
-      <div class="project-desc">Government-grade insurance platforms for the Australian market — vehicle policy registration lifecycle and end-to-end accidental claim processing with full compliance requirements.</div>
+      <div class="project-desc">Insurance platforms built for an Australian government insurance body — vehicle policy registration lifecycle and end-to-end accidental claim processing with full compliance requirements.</div>
       <ul class="project-highlights">
         <li>Vehicle registration flows, policy management, and renewal processing</li>
         <li>Full claim lifecycle: submission, assessor assignment, status tracking, resolution</li>
@@ -831,7 +933,7 @@
         </div>
         <div class="contact-link-arrow">→</div>
       </a>
-      <a href="https://linkedin.com/in/muhammad-hamza-javaid5a08b421b" target="_blank" class="contact-link">
+      <a href="https://www.linkedin.com/in/muhammad-hamza-javaid-5a08b421b" target="_blank" class="contact-link">
         <div class="contact-link-icon">in</div>
         <div class="contact-link-text">
           <div class="contact-link-label">LinkedIn</div>
@@ -839,20 +941,21 @@
         </div>
         <div class="contact-link-arrow">→</div>
       </a>
-      <div class="contact-link" style="opacity:0.4; cursor:default;">
+      <a href="https://github.com/MuhammadHamza-Javaid" target="_blank" rel="noopener" class="contact-link">
         <div class="contact-link-icon">⚡</div>
         <div class="contact-link-text">
           <div class="contact-link-label">GitHub</div>
-          <div class="contact-link-value">Coming soon — project in progress</div>
+          <div class="contact-link-value">github.com/MuhammadHamza-Javaid</div>
         </div>
-      </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-text">© 2025 Muhammad Hamza Javaid · Built with intent, not a template</div>
+  <div class="footer-text">© 2026 Muhammad Hamza Javaid · Built with intent, not a template</div>
   <div class="footer-status">Available for remote opportunities</div>
 </footer>
 
